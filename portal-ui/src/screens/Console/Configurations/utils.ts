@@ -39,6 +39,18 @@ export const configurationElements: IConfigurationElement[] = [
     configuration_id: "compression",
     configuration_label: "Edit Compression Configuration",
   },
+  {
+    configuration_id: "api",
+    configuration_label: "Edit API Configuration",
+  },
+  {
+    configuration_id: "heal",
+    configuration_label: "Edit Heal Configuration",
+  },
+  {
+    configuration_id: "scanner",
+    configuration_label: "Edit Scanner Configuration",
+  },
   { configuration_id: "etcd", configuration_label: "Edit Etcd Configuration" },
   {
     configuration_id: "identity_openid",
@@ -47,6 +59,10 @@ export const configurationElements: IConfigurationElement[] = [
   {
     configuration_id: "identity_ldap",
     configuration_label: "Edit Identity LDAP Configuration",
+  },
+  {
+    configuration_id: "identity_tls",
+    configuration_label: "Edit Identity TLS Configuration",
   },
   {
     configuration_id: "logger_webhook",
@@ -166,6 +182,139 @@ export const fieldsConfigurations: any = {
       type: "csv",
       placeholder: "Enter a Mime Type",
       withBorder: true,
+    },
+  ],
+  api: [
+    {
+      name: "requests_max",
+      required: false,
+      label: "Requests Max",
+      tooltip: "Maximum number of concurrent requests, e.g. '1600'",
+      type: "number",
+      placeholder: "Enter Requests Max",
+    },
+    /*
+    // disabled until missing keys from Help is handled:
+    // is this meant to be editable?
+    {
+      name: "requests_deadline",
+      required: false,
+      label: "Requests Deadline",
+      tooltip: "Requests Deadline",
+      type: "string",
+      placeholder: "Enter Requests Deadline",
+    },
+
+    // is this meant to be editable?
+    {
+      name: "cluster_deadline",
+      required: false,
+      label: "Cluster the deadline",
+      tooltip: "Cluster Deadline",
+      type: "string",
+      placeholder: "Enter Cluster Deadline",
+    },
+    */
+    {
+      name: "cors_allow_origin",
+      required: false,
+      label: "Cors Allow Origin",
+      tooltip: "list of origins allowed for CORS requests",
+      type: "csv",
+      placeholder: "Enter allowed origin e.g. https://example.com",
+    },
+    /*
+    // disabled until missing keys from Help is handled
+    // is this meant to be editable?
+    {
+      name: "remote_transport_deadline",
+      required: false,
+      label: "Remote Transport Deadline",
+      tooltip: "Remote Transport Deadline",
+      type: "duration",
+      placeholder: "Enter Remote Transport Deadline",
+    },
+
+    // is this meant to be editable?
+    {
+      name: "list_quorum",
+      required: false,
+      label: "List Quorum",
+      tooltip: "List Quorum",
+      type: "string",
+      placeholder: "Enter List Quorum",
+    },
+    */
+    {
+      name: "replication_workers",
+      required: false,
+      label: "Replication Workers",
+      tooltip: "Number of replication workers, defaults to 100",
+      type: "number",
+      placeholder: "Enter Replication Workers",
+    },
+    {
+      name: "replication_failed_workers",
+      required: false,
+      label: "Replication Failed Workers",
+      tooltip:
+        "Number of replication workers for recently failed replicas, defaults to 4",
+      type: "number",
+      placeholder: "Enter Replication Failed Workers",
+    },
+  ],
+  heal: [
+    {
+      name: "bitrotscan",
+      required: false,
+      label: "Bitrot Scan",
+      tooltip:
+        "Perform bitrot scan on disks when checking objects during scanner",
+      type: "on|off",
+    },
+    {
+      name: "max_sleep",
+      required: false,
+      label: "Max Sleep",
+      tooltip:
+        "Maximum sleep duration between objects to slow down heal operation. eg. 2s",
+      type: "duration",
+      placeholder: "Enter Max Sleep duration",
+    },
+    {
+      name: "max_io",
+      required: false,
+      label: "Max IO",
+      tooltip:
+        "Maximum IO requests allowed between objects to slow down heal operation. eg. 3",
+      type: "number",
+      placeholder: "Enter Max IO",
+    },
+  ],
+  scanner: [
+    {
+      name: "delay",
+      required: false,
+      label: "Delay multiplier",
+      tooltip: "Scanner delay multiplier, defaults to '10.0'",
+      type: "number",
+      placeholder: "Enter Delay",
+    },
+    {
+      name: "max_wait",
+      required: false,
+      label: "Max Wait",
+      tooltip: "Maximum wait time between operations, defaults to '15s'",
+      type: "duration",
+      placeholder: "Enter Max Wait",
+    },
+    {
+      name: "cycle",
+      required: false,
+      label: "Cycle",
+      tooltip: "Time duration between scanner cycles, defaults to '1m'",
+      type: "duration",
+      placeholder: "Enter Cycle",
     },
   ],
   etcd: [
@@ -337,6 +486,16 @@ export const fieldsConfigurations: any = {
       tooltip: "Optionally add a comment to this setting",
       type: "comment",
       placeholder: "Enter Comment",
+    },
+  ],
+  identity_tls: [
+    {
+      name: "skip_verify",
+      required: false,
+      label: "Skip Verify",
+      tooltip:
+        "Trust client certificates without verification. Defaults to 'off' (verify)",
+      type: "on|off",
     },
   ],
   logger_webhook: [
