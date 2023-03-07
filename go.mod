@@ -32,8 +32,8 @@ require (
 	github.com/secure-io/sio-go v0.3.1
 	github.com/stretchr/testify v1.7.0
 	github.com/unrolled/secure v1.0.9
-	golang.org/x/crypto v0.0.0-20210421170649-83a5a9bb288b
-	golang.org/x/net v0.0.0-20210421230115-4e50805a0758
+	golang.org/x/crypto v0.1.0
+	golang.org/x/net v0.1.0
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 	gopkg.in/yaml.v2 v2.4.0
 	k8s.io/api v0.21.1
